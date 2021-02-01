@@ -1,0 +1,28 @@
+{
+  "name": "simple-wallet-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victor-mwania/simple-wallet-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victor-mwania/simple-wallet-api/issues"
+  },
+  "homepage": "https://github.com/victor-mwania/simple-wallet-api#readme",
+  "dependencies": {
+    "apollo-server": "^2.19.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "pg": "^8.5.1",
+    "sequelize": "^6.5.0"
+  }
+}
