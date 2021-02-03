@@ -2,7 +2,7 @@ const models = require('../../models');
 const accountResolvers = {
     Query:{
         async balance(parent, args, context){
-            const auth = context.user
+            const auth = context.user.data
             if(!auth){
                 throw new Error('Not authenticated');
             }
@@ -17,7 +17,7 @@ const accountResolvers = {
         },
         
         async statements(parent, args, context){
-            const auth = context.user
+            const auth = context.user.data
             if(!auth){
                 throw new Error('Not authenticated');
             }
@@ -36,7 +36,7 @@ const accountResolvers = {
 
     Mutation: {
         async deposit(_, { amount }, context){
-            const auth = context.user
+            const auth = context.user.data
             if(!auth){
                 throw new Error('Not authenticated');
             }
@@ -69,7 +69,7 @@ const accountResolvers = {
         },
 
         async withdrawal(_, { amount }, context) {
-            const auth = context.user
+            const auth = context.user.data
             if(!auth){
                 throw new Error('Not authenticated');
             }
