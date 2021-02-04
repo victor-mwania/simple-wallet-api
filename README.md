@@ -32,11 +32,11 @@ You can access the graphql plaground from [http://localhost:4000/](http://localh
 
 ```graphql
 mutation {
-  signup(email: "tesrt@email.com", password:"12343", username:"223kmde3k") {
+  signup(email: "", password:"", username:"") {
     email,
     username,
-		id,
-		active
+    id,
+    active
   }
 }
 ```
@@ -60,9 +60,9 @@ mutation {
 The  account queries and mutations require a jsonwebtoken for authorization which is added in the request headers  under **http headers**  of the graphql playground
 
 ```json
-**{
+{
   "Authorization": "Bearer  <token>"
-}**
+}
 ```
 
 **Balance**
