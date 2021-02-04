@@ -4,6 +4,7 @@ const { createTestClient } = require('apollo-server-testing');
 const server  = require('../index')
 const { query, mutate } = createTestClient(server);
 
+const db = require('../models/index');
 const testUser = {
     email: 'test-user@gmail.com',
     password: 'test1234',
@@ -12,7 +13,17 @@ const testUser = {
   
 describe('Auth ', () => {
 
-    afterAll(() => {
+    beforeAll(async () => {
+        await db.User.destroy({
+            where: {},
+            truncate: true,
+            cascade: true,
+            force: true,
+          });
+    })
+
+    afterAll(async () => {
+      
         return server.stop();
     });
 
