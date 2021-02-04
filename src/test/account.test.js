@@ -80,7 +80,13 @@ describe('Account ', () => {
         done()
     });
 
-    afterAll(() => {
+    afterAll(async () => {
+        await db.Account.destroy({
+            where: {},
+            truncate: true,
+            cascade: true,
+            force: true,
+        });
         return server.stop();
     });
 

@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:12-alpine
+    container_name: simplewalletdb
+    networks:
+      - app-network
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: wallet_db
+  migrations:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    command:  npm run db:migrate
+    networks:
+      - app-network
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DATABASE: wallet_db
+
+  simplewallet:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    command:  npm run dev
+    image: simplewallet
+    container_name: simplewallet
+    networks:
+      - app-network
+    depends_on:
+      - db
+      - migrations
+    environment:
+      DB_HOST: db
+      PORT: 4000
+      NODE_ENV: development
+      APP_SECRET: 4n5pxq24kpiob12og9
+      DATABASE: wallet_db
+    ports:
+      - "4000:4000"
+
+networks:
+  app-network:

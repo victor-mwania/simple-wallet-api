@@ -7,7 +7,7 @@ const TransactionModel = require('./transaction');
 const dotenv = require('dotenv');
 dotenv.config({path: __dirname + '/../../.env'});
 
-const config = require(__dirname + '/../config/config.json')[process.env.NODE_ENV];
+const config = require(__dirname + '/../config/config.js')[process.env.NODE_ENV];
 
 const sequelize = new Sequelize(config);
 
