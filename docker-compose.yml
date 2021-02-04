@@ -12,7 +12,7 @@ services:
       POSTGRES_DB: wallet_db
   migrations:
     build:
-      context: ../
+      context: ./
       dockerfile: Dockerfile
     command:  npm run db:migrate
     networks:
@@ -25,7 +25,7 @@ services:
 
   simplewallet:
     build:
-      context: ../
+      context: ./
       dockerfile: Dockerfile
     command:  npm run dev
     image: simplewallet
